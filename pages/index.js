@@ -1,334 +1,176 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { useState } from 'react'
 
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <div style={{ background: '#0a0a0a', color: '#f5f5f5' }}>
+    <div className="bg-[#050505] min-h-screen text-[#e0e0e0] selection:bg-gold selection:text-black font-sans">
       <Head>
-        <title>Brian Ivie Hair LLC | Premium Hair Restoration & Custom Solutions | St. Louis</title>
-        <meta name="description" content="Expert hair replacement, custom wigs, extensions, and color services. Partnered with St. Louis physicians for comprehensive hair loss solutions." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Brian Ivie Hair | St. Louis Hair Restoration & Custom Units</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       </Head>
 
-      {/* Navigation */}
-      <header style={{
-        background: 'linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(15, 15, 15, 0.95) 100%)',
-        padding: '1.5rem 0',
-        borderBottom: '1px solid #333',
-        position: 'sticky',
-        top: 0,
-        zIndex: 100,
-        backdropFilter: 'blur(10px)'
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <h1 style={{ fontSize: '1.75rem', margin: 0, fontFamily: "'Playfair Display', serif", letterSpacing: '-0.5px' }}>
-            <span style={{ color: '#d4af37' }}>Brian Ivie</span> Hair LLC
-          </h1>
-          <nav style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-            <Link href="/" style={{ color: '#d4af37', fontWeight: 600 }}>Home</Link>
-            <Link href="/services" style={{ color: '#d1d5db', fontWeight: 500 }}>Services</Link>
-            <Link href="/about" style={{ color: '#d1d5db', fontWeight: 500 }}>About</Link>
-            <Link href="/physicians" style={{ color: '#d1d5db', fontWeight: 500 }}>Physician Partners</Link>
-            <Link href="/contact" style={{ color: '#d1d5db', fontWeight: 500 }}>Contact</Link>
-          </nav>
-        </div>
+      {/* Editorial Navigation */}
+      <header className="fixed top-0 w-full z-50 mix-blend-difference px-6 py-8 md:px-12 flex justify-between items-center">
+        <Link href="/" className="text-2xl font-black uppercase italic tracking-tighter">
+          Brian Ivie <span className="text-gold">Hair</span>
+        </Link>
+        
+        <button 
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="group flex flex-col gap-1.5 focus:outline-none"
+        >
+          <div className={`h-0.5 w-8 bg-white transition-all ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+          <div className={`h-0.5 w-8 bg-white transition-all ${menuOpen ? 'opacity-0' : ''}`} />
+          <div className={`h-0.5 w-8 bg-white transition-all ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+        </button>
       </header>
 
-      {/* Hero Section */}
-      <section style={{
-        position: 'relative',
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        overflow: 'hidden'
-      }}>
-        <img
-          src="/images/hero-bg.jpg"
-          alt="Luxury barbershop"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            zIndex: 0
-          }}
-        />
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          background: 'linear-gradient(135deg, rgba(10, 10, 10, 0.7) 0%, rgba(10, 10, 10, 0.5) 100%)',
-          zIndex: 1
-        }} />
-        <div style={{
-          position: 'relative',
-          zIndex: 2,
-          textAlign: 'center',
-          maxWidth: '800px',
-          padding: '2rem'
-        }}>
-          <h1 style={{ fontSize: '4rem', marginBottom: '1rem', fontFamily: "'Playfair Display', serif" }}>
-            Premium Hair Restoration
-          </h1>
-          <p style={{ fontSize: '1.25rem', marginBottom: '2rem', color: '#d1d5db', lineHeight: 1.8 }}>
-            Custom hair systems, professional cuts, color services, and medical partnerships. Restore your confidence with expert care.
-          </p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/services">
-              <button style={{
-                padding: '1rem 2.5rem',
-                background: 'linear-gradient(135deg, #d4af37 0%, #e5c158 100%)',
-                color: '#0a0a0a',
-                border: 'none',
-                borderRadius: '0.5rem',
-                fontSize: '1.1rem',
-                fontWeight: 600,
-                cursor: 'pointer'
-              }}>
-                Explore Services
-              </button>
-            </Link>
-            <Link href="/contact">
-              <button style={{
-                padding: '1rem 2.5rem',
-                background: 'transparent',
-                color: '#d4af37',
-                border: '2px solid #d4af37',
-                borderRadius: '0.5rem',
-                fontSize: '1.1rem',
-                fontWeight: 600,
-                cursor: 'pointer'
-              }}>
-                Book Consultation
-              </button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Overview */}
-      <section style={{ padding: '5rem 0', background: '#0a0a0a' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <h2 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '2.5rem', fontFamily: "'Playfair Display', serif" }}>
-            Our Services
-          </h2>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '2rem'
-          }}>
-            {[
-              {
-                title: 'Custom Hair Systems',
-                desc: 'Individually molded and perfected toupees for natural-looking results. Non-surgical, immediate confidence.',
-                img: '/images/custom-unit-hero.jpg'
-              },
-              {
-                title: 'Professional Haircuts',
-                desc: 'Expert cuts of any kind—fades, shapes, and precision styling for all hair types.',
-                img: '/images/service-haircut.jpg'
-              },
-              {
-                title: 'Color & Extensions',
-                desc: 'Custom color treatments and premium hair extensions. Tailored to your exact specifications.',
-                img: '/images/service-color.jpg'
-              },
-              {
-                title: 'Wig Fitting & Consultation',
-                desc: 'Medical-grade wigs for alopecia, post-surgery, and chemotherapy patients. Expert fitting.',
-                img: '/images/service-extensions.jpg'
-              }
-            ].map((service, idx) => (
-              <div key={idx} style={{
-                background: 'linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%)',
-                border: '1px solid #333',
-                borderRadius: '0.75rem',
-                overflow: 'hidden'
-              }}>
-                <img src={service.img} alt={service.title} style={{
-                  width: '100%',
-                  height: '200px',
-                  objectFit: 'cover'
-                }} />
-                <div style={{ padding: '1.5rem' }}>
-                  <h3 style={{ marginBottom: '0.75rem', fontSize: '1.25rem', fontFamily: "'Playfair Display', serif" }}>
-                    {service.title}
-                  </h3>
-                  <p style={{ color: '#d1d5db', lineHeight: 1.6 }}>
-                    {service.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Physician Partnerships */}
-      <section style={{ padding: '5rem 0', background: 'linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%)' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
-            <div>
-              <h2 style={{ marginBottom: '1.5rem', fontSize: '2.5rem', fontFamily: "'Playfair Display', serif" }}>
-                Medical Partnerships
-              </h2>
-              <p style={{ marginBottom: '1rem', color: '#d1d5db', lineHeight: 1.8 }}>
-                We partner with St. Louis physicians to provide comprehensive hair loss solutions. While you prescribe finasteride, minoxidil, and other treatments, we provide immediate aesthetic restoration.
-              </p>
-              <p style={{ marginBottom: '1rem', color: '#d1d5db', lineHeight: 1.8 }}>
-                <strong style={{ color: '#d4af37' }}>The Result:</strong> Your patients get complete care—medical treatment + confidence restoration. Patients stay engaged, satisfied, and loyal.
-              </p>
-              <p style={{ marginBottom: '2rem', color: '#d1d5db', lineHeight: 1.8 }}>
-                Physicians benefit from referral partnerships, improved patient outcomes, and differentiated practice positioning.
-              </p>
-              <Link href="/physicians">
-                <button style={{
-                  padding: '1rem 2rem',
-                  background: 'linear-gradient(135deg, #d4af37 0%, #e5c158 100%)',
-                  color: '#0a0a0a',
-                  border: 'none',
-                  borderRadius: '0.5rem',
-                  fontSize: '1rem',
-                  fontWeight: 600,
-                  cursor: 'pointer'
-                }}>
-                  Learn About Physician Partnerships
-                </button>
+      {/* Fullscreen Menu */}
+      {menuOpen && (
+        <div className="fixed inset-0 z-40 bg-gold flex flex-col items-center justify-center p-6 animate-in fade-in duration-300">
+          <nav className="flex flex-col gap-8 text-center">
+            {['Home', 'Services', 'About', 'Physicians', 'Contact'].map((item) => (
+              <Link 
+                key={item}
+                href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+                onClick={() => setMenuOpen(false)}
+                className="text-5xl md:text-7xl font-black uppercase italic text-black hover:tracking-widest transition-all duration-500"
+              >
+                {item}
               </Link>
-            </div>
-            <img src="/images/service-physician.jpg" alt="Medical consultation" style={{
-              borderRadius: '0.75rem',
-              width: '100%',
-              height: 'auto'
-            }} />
+            ))}
+            <Link 
+              href="/book" 
+              onClick={() => setMenuOpen(false)}
+              className="mt-8 text-xl font-bold uppercase tracking-widest text-black border-2 border-black px-12 py-4 hover:bg-black hover:text-gold transition"
+            >
+              Book Now
+            </Link>
+          </nav>
+        </div>
+      )}
+
+      {/* Hero Section: Gritty & Bold */}
+      <section className="relative h-screen flex flex-col justify-end p-6 md:p-20 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/hero-bg.jpg" 
+            className="w-full h-full object-cover grayscale opacity-40 scale-105 animate-pulse-slow" 
+            alt="Hero" 
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent" />
+        </div>
+        
+        <div className="relative z-10 max-w-4xl">
+          <p className="text-gold uppercase tracking-[0.4em] text-xs font-black mb-4">St. Louis, MO • Established Expertise</p>
+          <h1 className="text-6xl md:text-[10rem] font-black uppercase italic leading-[0.8] tracking-tighter mb-8">
+            Restore <br />
+            <span className="text-gold">Your Look.</span>
+          </h1>
+          <div className="flex flex-col md:flex-row gap-6 items-start md:items-center">
+            <Link href="/book" className="group bg-gold text-black px-12 py-6 text-xl font-black uppercase italic tracking-tighter hover:px-16 transition-all">
+              Book a Session
+            </Link>
+            <p className="text-sm md:text-lg max-w-md opacity-60 font-medium leading-tight">
+              Custom hair systems, precision fades, and medical partnerships. No generic solutions—just perfected fit and natural results.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Why Choose */}
-      <section style={{ padding: '5rem 0', background: '#0a0a0a' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <h2 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '2.5rem', fontFamily: "'Playfair Display', serif" }}>
-            Why Choose Brian Ivie Hair LLC
-          </h2>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: '2rem'
-          }}>
+      {/* The "Work" Section */}
+      <section className="py-32 px-6 bg-[#080808]">
+        <div className="container mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+            <h2 className="text-5xl md:text-8xl font-black uppercase italic tracking-tighter leading-none">
+              The <br /><span className="text-gold">Craft.</span>
+            </h2>
+            <p className="max-w-md text-sm md:text-base opacity-50 italic">
+              "I don't just cut hair—I restore confidence. Every unit is custom molded and perfected for the individual. It's about the fit, the color, and the soul of the style." — Brian Ivie
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
-              { icon: '✓', title: '15+ Years Experience', desc: 'Expert in hair replacement, restoration, and custom solutions.' },
-              { icon: '✓', title: '100% Custom Solutions', desc: 'Every unit individually molded and perfected for your unique needs.' },
-              { icon: '✓', title: 'Natural Results', desc: 'Undetectable hairlines and seamless blending. Confidence restored.' },
-              { icon: '✓', title: 'Medical-Grade Quality', desc: 'Professional standards, HIPAA compliance, and clinical expertise.' },
-              { icon: '✓', title: 'Ongoing Support', desc: 'Maintenance, adjustments, and lifetime customer care.' },
-              { icon: '✓', title: 'Physician Partnerships', desc: 'Coordinated care with St. Louis medical professionals.' }
-            ].map((item, idx) => (
-              <div key={idx} style={{
-                background: 'linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%)',
-                border: '1px solid #333',
-                borderRadius: '0.75rem',
-                padding: '2rem',
-                textAlign: 'center'
-              }}>
-                <div style={{ fontSize: '2rem', color: '#d4af37', marginBottom: '1rem' }}>
-                  {item.icon}
+              { title: 'Custom Units', type: 'Hair Restoration', img: '/images/custom-unit-hero.jpg' },
+              { title: 'Precision Cuts', type: 'Barbering', img: '/images/service-haircut.jpg' },
+              { title: 'Wig Fitting', type: 'Medical Grade', img: '/images/wig-fitting.jpg' },
+              { title: 'Physician Loop', type: 'Clinical Partnership', img: '/images/service-physician.jpg' }
+            ].map((work, i) => (
+              <div key={i} className="group relative aspect-[4/5] overflow-hidden bg-white/5">
+                <img 
+                  src={work.img} 
+                  className="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700" 
+                  alt={work.title} 
+                />
+                <div className="absolute bottom-0 left-0 p-8 w-full bg-gradient-to-t from-black to-transparent">
+                  <p className="text-gold text-[10px] uppercase tracking-widest font-black mb-1">{work.type}</p>
+                  <h3 className="text-3xl font-black uppercase italic tracking-tighter">{work.title}</h3>
                 </div>
-                <h3 style={{ marginBottom: '0.75rem', fontSize: '1.1rem', fontFamily: "'Playfair Display', serif" }}>
-                  {item.title}
-                </h3>
-                <p style={{ color: '#d1d5db', fontSize: '0.95rem', lineHeight: 1.6 }}>
-                  {item.desc}
-                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section style={{
-        padding: '4rem 0',
-        background: 'linear-gradient(135deg, #d4af37 0%, #e5c158 100%)',
-        textAlign: 'center'
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <h2 style={{ color: '#0a0a0a', marginBottom: '1rem', fontSize: '2.5rem', fontFamily: "'Playfair Display', serif" }}>
-            Ready to Restore Your Confidence?
-          </h2>
-          <p style={{ color: '#0a0a0a', marginBottom: '2rem', fontSize: '1.1rem' }}>
-            Schedule a consultation with Brian Ivie Hair LLC today.
-          </p>
-          <Link href="/contact">
-            <button style={{
-              padding: '1rem 2.5rem',
-              background: '#0a0a0a',
-              color: '#d4af37',
-              border: 'none',
-              borderRadius: '0.5rem',
-              fontSize: '1.1rem',
-              fontWeight: 600,
-              cursor: 'pointer'
-            }}>
-              Book Your Consultation
-            </button>
-          </Link>
+      {/* Clinical Section: Physician Partnership */}
+      <section className="py-32 px-6 border-y border-white/5">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+          <div className="order-2 md:order-1">
+            <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-8">
+              Medical <br /><span className="text-gold">Integration.</span>
+            </h2>
+            <p className="text-lg opacity-70 mb-8 leading-relaxed">
+              We bridge the gap between clinical treatment and aesthetic restoration. Partnering with St. Louis' top physicians to provide immediate results while medical treatments take effect.
+            </p>
+            <div className="space-y-4 mb-10">
+              {['Minoxidil/Rogaine Support', 'Finasteride Synergy', 'Microneedling Coordination', 'Ketoconazole Integration'].map((item) => (
+                <div key={item} className="flex items-center gap-4">
+                  <div className="w-2 h-2 bg-gold" />
+                  <span className="uppercase text-xs font-bold tracking-widest">{item}</span>
+                </div>
+              ))}
+            </div>
+            <Link href="/physicians" className="text-gold text-sm font-black uppercase tracking-widest border-b-2 border-gold/30 hover:border-gold transition pb-2">
+              Physician Partnership Info →
+            </Link>
+          </div>
+          <div className="order-1 md:order-2 bg-white/5 p-4 rounded-3xl">
+            <img src="/images/service-physician.jpg" className="w-full rounded-2xl grayscale hover:grayscale-0 transition duration-500" alt="Physician Partnership" />
+          </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer style={{
-        background: 'linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(15, 15, 15, 0.95) 100%)',
-        borderTop: '1px solid #333',
-        padding: '3rem 0',
-        marginTop: '5rem'
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: '2rem',
-            marginBottom: '2rem'
-          }}>
+      {/* Location / Contact */}
+      <section className="py-32 px-6">
+        <div className="container mx-auto text-center">
+          <p className="text-gold uppercase tracking-[0.4em] text-[10px] font-black mb-6">Find the Studio</p>
+          <h2 className="text-4xl md:text-7xl font-black uppercase italic tracking-tighter mb-12">
+            Salon Lofts <br />on Olive Blvd
+          </h2>
+          <div className="flex flex-col md:flex-row justify-center gap-12 text-sm uppercase tracking-widest font-bold opacity-60">
             <div>
-              <h3 style={{ color: '#d4af37', marginBottom: '1rem', fontFamily: "'Playfair Display', serif" }}>
-                Brian Ivie Hair LLC
-              </h3>
-              <p style={{ color: '#d1d5db', lineHeight: 1.8 }}>
-                Premium hair restoration and custom solutions in Saint Louis. Partnered with local physicians for comprehensive care.
-              </p>
+              <p className="text-gold mb-2">Location</p>
+              <p>St. Louis, MO</p>
             </div>
             <div>
-              <h4 style={{ color: '#d4af37', marginBottom: '1rem' }}>Quick Links</h4>
-              <ul style={{ listStyle: 'none', padding: 0 }}>
-                <li style={{ marginBottom: '0.5rem' }}><Link href="/services" style={{ color: '#d1d5db' }}>Services</Link></li>
-                <li style={{ marginBottom: '0.5rem' }}><Link href="/about" style={{ color: '#d1d5db' }}>About</Link></li>
-                <li style={{ marginBottom: '0.5rem' }}><Link href="/physicians" style={{ color: '#d1d5db' }}>Physician Partners</Link></li>
-                <li><Link href="/contact" style={{ color: '#d1d5db' }}>Contact</Link></li>
-              </ul>
+              <p className="text-gold mb-2">Connect</p>
+              <p>info@myhairloss.com</p>
             </div>
             <div>
-              <h4 style={{ color: '#d4af37', marginBottom: '1rem' }}>Contact</h4>
-              <p style={{ color: '#d1d5db', marginBottom: '0.5rem' }}>📍 Salon Lofts on Olive Blvd, Saint Louis, MO</p>
-              <p style={{ color: '#d1d5db', marginBottom: '0.5rem' }}>📧 <a href="mailto:info@myhairloss.com" style={{ color: '#d4af37' }}>info@myhairloss.com</a></p>
-              <p style={{ color: '#d1d5db' }}>📞 <a href="tel:+15551234567" style={{ color: '#d4af37' }}>(555) 123-4567</a></p>
+              <p className="text-gold mb-2">Hours</p>
+              <p>By Appointment Only</p>
             </div>
-          </div>
-          <div style={{
-            borderTop: '1px solid #333',
-            paddingTop: '2rem',
-            textAlign: 'center',
-            color: '#999'
-          }}>
-            <p>© {new Date().getFullYear()} Brian Ivie Hair LLC. All rights reserved.</p>
           </div>
         </div>
-      </footer>
+      </section>
+
+      {/* Grainy Texture Overlay */}
+      <div className="fixed inset-0 pointer-events-none opacity-[0.03] contrast-150 brightness-150" 
+           style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }} />
     </div>
   )
 }
