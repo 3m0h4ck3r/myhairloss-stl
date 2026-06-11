@@ -97,7 +97,7 @@ export default function Contact() {
               </h2>
               <div style={{ marginBottom: '2rem' }}>
                 <h3 style={{ color: '#d4af37', marginBottom: '0.5rem' }}>Address</h3>
-                <p style={{ color: '#d1d5db' }}>3674 Ashby Rd<br />Saint Louis, MO</p>
+                <p style={{ color: '#d1d5db' }}>Salon Lofts on Olive Blvd<br />Saint Louis, MO</p>
               </div>
               <div style={{ marginBottom: '2rem' }}>
                 <h3 style={{ color: '#d4af37', marginBottom: '0.5rem' }}>Email</h3>
@@ -301,7 +301,7 @@ export default function Contact() {
             </div>
             <div>
               <h4 style={{ color: '#d4af37', marginBottom: '1rem' }}>Contact</h4>
-              <p style={{ color: '#d1d5db', marginBottom: '0.5rem' }}>📍 3674 Ashby Rd, Saint Louis, MO</p>
+              <p style={{ color: '#d1d5db', marginBottom: '0.5rem' }}>📍 Salon Lofts on Olive Blvd, Saint Louis, MO</p>
               <p style={{ color: '#d1d5db', marginBottom: '0.5rem' }}>📧 <a href="mailto:info@myhairloss.com" style={{ color: '#d4af37' }}>info@myhairloss.com</a></p>
               <p style={{ color: '#d1d5db' }}>📞 <a href="tel:+15551234567" style={{ color: '#d4af37' }}>(555) 123-4567</a></p>
             </div>
