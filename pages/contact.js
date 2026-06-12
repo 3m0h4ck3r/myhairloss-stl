@@ -57,7 +57,7 @@ export default function Contact() {
               <div className="space-y-8">
                 <div>
                   <h4 className="text-xs uppercase tracking-widest text-gray-400 mb-2">Location</h4>
-                  <p className="text-lg font-semibold">Salon Lofts on Olive Blvd, Saint Louis, MO</p>
+                  <p className="text-lg font-semibold">Salon Lofts Heritage Place, 12511 Olive Blvd, Creve Coeur, MO 63141, Saint Louis, MO</p>
                 </div>
                 <div>
                   <h4 className="text-xs uppercase tracking-widest text-gray-400 mb-2">Email</h4>

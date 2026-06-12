@@ -28,16 +28,16 @@ export default function Home() {
 
       {/* Top Branding Emphasis */}
       <div className="bg-[#1a1a1a] text-[#d4af37] py-3 text-center">
-        <span className="text-lg md:text-2xl font-black tracking-[0.3em] uppercase">MYHAIRLOSS.COM</span>
+        <Link href="/" className="text-lg md:text-2xl font-black tracking-[0.3em] uppercase text-[#d4af37] hover:text-white transition-colors">MYHAIRLOSS.COM</Link>
       </div>
 
       <header className="glass-nav px-6 py-6 flex justify-between items-center">
-        <div className="flex flex-col">
+        <Link href="/" className="flex flex-col">
           <span className="text-sm font-serif italic text-[#d4af37]">Executive Hair Restoration</span>
           <h1 className="text-xl md:text-2xl font-bold tracking-tight text-[#1a1a1a] leading-none">
             BRIAN IVIE <span className="font-light">HAIR & EXTENSIONS</span>
           </h1>
-        </div>
+        </Link>
         
         <nav className="hidden lg:flex items-center gap-8">
           <Link href="#replacement" className="nav-link">Hair Replacement</Link>
@@ -83,6 +83,34 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-6">
                 <Link href="/book" className="btn-primary bg-[#d4af37] text-[#1a1a1a] hover:bg-white">Book Consultation</Link>
                 <Link href="#services" className="btn-outline border-white text-white hover:bg-white hover:text-[#1a1a1a]">Explore Services</Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Confidentiality & Location Section */}
+        <section className="py-20 bg-[#fdfdfb] border-b border-gray-100">
+          <div className="container mx-auto max-w-5xl">
+            <div className="flex flex-col md:flex-row items-center gap-16">
+              <div className="md:w-1/2">
+                <h2 className="text-[#d4af37] text-sm uppercase tracking-[0.3em] mb-4">Absolute Discretion</h2>
+                <h2 className="text-4xl md:text-5xl mb-8 leading-tight font-bold">Private & Confidential</h2>
+                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                  Located within **Salon Lofts Heritage Place, 12511 Olive Blvd, Creve Coeur, MO 63141**, Brian operates out of a private, closed-off station. We understand the importance of confidentiality—our studio is designed for those who value their privacy while receiving the highest level of care.
+                </p>
+                <div className="bg-white p-6 border-l-4 border-[#d4af37] card-shadow">
+                  <p className="text-sm font-bold text-[#1a1a1a] mb-2 uppercase tracking-widest">Our Location</p>
+                  <p className="text-gray-500">12511 Olive Blvd, Creve Coeur, MO 63141</p>
+                  <p className="text-gray-500 mt-1 italic text-xs">(Inside Salon Lofts)</p>
+                </div>
+              </div>
+              <div className="md:w-1/2">
+                <div className="aspect-[4/3] bg-gray-100 relative overflow-hidden flex items-center justify-center">
+                  <div className="absolute inset-0 bg-[#1a1a1a]/5"></div>
+                  <div className="text-[#d4af37] font-serif italic text-xl opacity-20 uppercase tracking-[0.2em] text-center p-8">
+                    Confidential Restoration Studio
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -222,9 +250,9 @@ export default function Home() {
           <div>
             <h4 className="text-[#d4af37] text-xs uppercase tracking-[0.2em] mb-6">Location</h4>
             <p className="text-white/60 text-sm leading-loose">
-              Salon Lofts on Olive Blvd<br/>
-              Saint Louis, MO<br/>
-              <span className="text-white mt-4 block">Call to set your appointment today.</span>
+              Salon Lofts Heritage Place<br/>
+              12511 Olive Blvd, Creve Coeur, MO 63141<br/>
+              <span className="text-white mt-4 block font-bold">Call/Text: <a href="tel:3145834843" className="hover:text-[#d4af37]">314-583-4843</a></span>
             </p>
           </div>
         </div>
