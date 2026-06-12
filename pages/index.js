@@ -5,234 +5,231 @@ import { useState } from 'react'
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const services = [
+    { title: 'Hair Replacement', desc: 'Custom molded systems, perfected for each customer\'s color and fit. We cut and style ANY system, regardless of where it was purchased.', link: '/services' },
+    { title: 'Laser Hair Therapy', desc: 'Clinical-grade LLLT to stimulate growth, thicken hair, and revitalize follicles. Essential post-transplant care.', link: '/laser-therapy' },
+    { title: 'Hair Extensions', desc: 'Premium extensions for length, volume, and color. Expertly applied for a seamless, natural look.', link: '/services' },
+    { title: 'Transplant Consultations', desc: 'Professional consultations for hair transplantation by approved medical doctors. We coordinate your journey.', link: '/services' }
+  ];
+
+  const products = [
+    { name: 'Professional Tapes', desc: 'Ultra-hold adhesives for secure system placement.' },
+    { name: 'Liquid Adhesives', desc: 'Medical-grade bonding for active lifestyles.' },
+    { name: 'Specialty Shampoos', desc: 'Formulated for hair systems and extensions.' },
+    { name: 'Conditioners & Serums', desc: 'Essential care for maintaining hair longevity.' }
+  ];
+
   return (
-    <div className="bg-[#fdfdfb] min-h-screen text-[#2d2d2d] font-sans">
+    <div className="bg-[#fdfdfb]">
       <Head>
-        <title>Brian Ivie Hair and Extensions | Advanced Laser Hair Therapy | St. Louis</title>
+        <title>MYHAIRLOSS.COM | Brian Ivie Hair Replacement and Extensions</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       </Head>
 
-      {/* Clean Navigation */}
-      <header className="sticky top-0 w-full z-50 bg-white border-b border-[#f0eee6] px-6 py-5 flex justify-between items-center">
-        <Link href="/" className="text-xl font-extrabold tracking-tight text-[#3c2a21]">
-          BRIAN IVIE <span className="text-[#9a6137]">HAIR & EXTENSIONS</span>
-        </Link>
+      {/* Top Branding Emphasis */}
+      <div className="bg-[#1a1a1a] text-[#d4af37] py-3 text-center">
+        <span className="text-lg md:text-2xl font-black tracking-[0.3em] uppercase">MYHAIRLOSS.COM</span>
+      </div>
+
+      <header className="glass-nav px-6 py-6 flex justify-between items-center">
+        <div className="flex flex-col">
+          <span className="text-sm font-serif italic text-[#d4af37]">Executive Hair Restoration</span>
+          <h1 className="text-xl md:text-2xl font-bold tracking-tight text-[#1a1a1a] leading-none">
+            BRIAN IVIE <span className="font-light">HAIR & EXTENSIONS</span>
+          </h1>
+        </div>
         
-        <nav className="hidden md:flex items-center gap-10">
-          {['Services', 'Laser-Therapy', 'About', 'Contact'].map((item) => (
-            <Link key={item} href={`/${item.toLowerCase()}`} className="text-sm font-bold uppercase tracking-widest text-[#3c2a21] hover:text-[#9a6137] transition">
-              {item.replace('-', ' ')}
-            </Link>
-          ))}
-          <Link href="/book" className="bg-[#3c2a21] text-white px-8 py-3 rounded-lg text-sm font-bold uppercase tracking-widest hover:bg-[#9a6137] transition">
-            Book Now
-          </Link>
+        <nav className="hidden lg:flex items-center gap-8">
+          <Link href="#replacement" className="nav-link">Hair Replacement</Link>
+          <Link href="/laser-therapy" className="nav-link">Laser Therapy</Link>
+          <Link href="#extensions" className="nav-link">Extensions</Link>
+          <Link href="#transplant" className="nav-link">Transplant Consultations</Link>
+          <Link href="#products" className="nav-link">Products</Link>
+          <Link href="/book" className="btn-primary py-3 px-6">Book Session</Link>
         </nav>
 
-        <button 
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden flex flex-col gap-1.5 focus:outline-none"
-        >
-          <div className={`h-0.5 w-6 bg-[#3c2a21] transition-all ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-          <div className={`h-0.5 w-6 bg-[#3c2a21] transition-all ${menuOpen ? 'opacity-0' : ''}`} />
-          <div className={`h-0.5 w-6 bg-[#3c2a21] transition-all ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+        <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden flex flex-col gap-1.5">
+          <div className={`h-0.5 w-6 bg-[#1a1a1a] transition-all ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+          <div className={`h-0.5 w-6 bg-[#1a1a1a] transition-all ${menuOpen ? 'opacity-0' : ''}`} />
+          <div className={`h-0.5 w-6 bg-[#1a1a1a] transition-all ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
         </button>
       </header>
 
-      {/* Mobile Menu */}
       {menuOpen && (
-        <div className="fixed inset-0 z-40 bg-white flex flex-col items-center justify-center p-6 animate-in fade-in">
-          <nav className="flex flex-col gap-10 text-center">
-            {['Home', 'Services', 'Laser Therapy', 'About', 'Contact'].map((item) => (
-              <Link 
-                key={item}
-                href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`}
-                onClick={() => setMenuOpen(false)}
-                className="text-3xl font-extrabold uppercase text-[#3c2a21]"
-              >
-                {item}
-              </Link>
-            ))}
-            <Link 
-              href="/book" 
-              onClick={() => setMenuOpen(false)}
-              className="mt-6 bg-[#3c2a21] text-white px-12 py-5 rounded-xl text-lg font-bold uppercase"
-            >
-              Book Now
-            </Link>
-          </nav>
+        <div className="fixed inset-0 z-[100] bg-[#1a1a1a] flex flex-col items-center justify-center p-6">
+          <button onClick={() => setMenuOpen(false)} className="absolute top-8 right-8 text-[#d4af37] text-4xl">&times;</button>
+          <Link href="#replacement" onClick={() => setMenuOpen(false)} className="text-2xl font-serif text-white mb-8">Hair Replacement</Link>
+          <Link href="/laser-therapy" onClick={() => setMenuOpen(false)} className="text-2xl font-serif text-white mb-8">Laser Therapy</Link>
+          <Link href="#extensions" onClick={() => setMenuOpen(false)} className="text-2xl font-serif text-white mb-8">Extensions</Link>
+          <Link href="#transplant" onClick={() => setMenuOpen(false)} className="text-2xl font-serif text-white mb-8">Transplant Consultations</Link>
+          <Link href="#products" onClick={() => setMenuOpen(false)} className="text-2xl font-serif text-white mb-8">Products</Link>
+          <Link href="/book" onClick={() => setMenuOpen(false)} className="btn-primary bg-[#d4af37] text-[#1a1a1a] w-full max-w-xs py-5">Book Now</Link>
         </div>
       )}
 
-      {/* Hero Section: Focused on Laser & Extensions */}
-      <section className="py-16 md:py-24 bg-[#f0eee6]">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <p className="text-[#9a6137] font-bold uppercase tracking-widest text-sm mb-4">St. Louis, MO • Salon Lofts on Olive</p>
-            <h1 className="mb-8 text-[#3c2a21]">
-              Advanced Laser Hair Therapy & Premium Extensions
-            </h1>
-            <p className="text-xl leading-relaxed text-[#4a4a4a] mb-10">
-              Restore your hair's density with clinical-grade Laser Therapy. We specialize in custom-molded units, premium extensions, and precision cuts tailored to your unique look.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/book" className="bg-[#3c2a21] text-white text-center px-10 py-5 rounded-xl font-bold text-lg hover:bg-[#9a6137] transition">
-                Book a Consultation
-              </Link>
-              <Link href="/laser-therapy" className="bg-white text-[#3c2a21] text-center px-10 py-5 rounded-xl font-bold text-lg border border-[#f0eee6] hover:bg-[#f0eee6] transition">
-                Explore Laser Therapy
-              </Link>
+      <main>
+        {/* Hero Section */}
+        <section className="relative h-[80vh] flex items-center bg-[#1a1a1a] overflow-hidden">
+          <div className="absolute inset-0 opacity-40 bg-[url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80')] bg-cover bg-center"></div>
+          <div className="container mx-auto relative z-10 px-6">
+            <div className="max-w-3xl">
+              <h2 className="text-[#d4af37] text-lg uppercase tracking-[0.4em] mb-4">Elite Hair Restoration</h2>
+              <h1 className="text-white text-5xl md:text-8xl font-bold mb-8 leading-[1.1]">
+                Mastery in <br/><span className="italic font-serif font-light text-[#d4af37]">Every Strand.</span>
+              </h1>
+              <p className="text-white/70 text-lg md:text-xl max-w-xl mb-12 leading-relaxed">
+                Specializing in custom molded hair systems, clinical laser therapy, and premium extensions. Executive care for St. Louis professionals.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-6">
+                <Link href="/book" className="btn-primary bg-[#d4af37] text-[#1a1a1a] hover:bg-white">Book Consultation</Link>
+                <Link href="#services" className="btn-outline border-white text-white hover:bg-white hover:text-[#1a1a1a]">Explore Services</Link>
+              </div>
             </div>
           </div>
-          <div className="bg-white/50 p-4 rounded-3xl border border-white">
-            <div className="bg-[#e0ddd0] w-full aspect-video rounded-2xl flex flex-col items-center justify-center text-[#9a6137] font-bold uppercase tracking-widest text-xs p-8 text-center">
-              <span className="mb-4">Advanced Laser Therapy System</span>
-              <span className="text-[10px] opacity-60">Non-Invasive • Clinical Grade • Results Driven</span>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Main Pillars Section */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="mb-6 text-[#3c2a21]">Our Four Pillars</h2>
-            <div className="w-20 h-1.5 bg-[#9a6137] mx-auto" />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Pillar 1: Laser Therapy (The Star) */}
-            <div className="info-card border-2 border-[#9a6137]/20 bg-[#9a6137]/5">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-[#9a6137] rounded-full flex items-center justify-center text-white">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+        {/* The Big 4 Services */}
+        <section id="services" className="section-padding bg-white">
+          <div className="container mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+              {services.map((s, i) => (
+                <div key={i} className="group">
+                  <div className="h-1 w-12 bg-[#d4af37] mb-8 group-hover:w-full transition-all duration-500"></div>
+                  <h3 className="text-2xl mb-4 text-[#1a1a1a]">{s.title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed mb-6">{s.desc}</p>
+                  <Link href={s.link} className="text-xs font-bold uppercase tracking-widest text-[#d4af37] hover:text-[#1a1a1a] transition-colors">Learn More &rarr;</Link>
                 </div>
-                <h3 className="text-[#3c2a21]">Laser Hair Therapy</h3>
-              </div>
-              <p className="text-lg mb-6">
-                Our primary focus for non-invasive restoration. Using low-level laser therapy (LLLT) to stimulate follicles, increase blood flow, and promote thicker, fuller hair growth.
-              </p>
-              <ul className="space-y-3 mb-8">
-                {['FDA-Cleared Technology', 'Stimulates Cellular Activity', 'Increases Hair Density', 'Painless & Non-Invasive'].map(item => (
-                  <li key={item} className="flex items-center gap-3 font-bold text-sm text-[#3c2a21]">
-                    <div className="w-1.5 h-1.5 bg-[#9a6137] rounded-full" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <Link href="/laser-therapy" className="text-[#9a6137] font-extrabold uppercase tracking-widest text-xs border-b-2 border-[#9a6137]/20 hover:border-[#9a6137] transition pb-1">
-                Deep Dive into Laser Therapy →
-              </Link>
-            </div>
-
-            {/* Pillar 2: Custom Extensions */}
-            <div className="info-card">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-[#3c2a21] rounded-full flex items-center justify-center text-white italic font-black">E</div>
-                <h3 className="text-[#3c2a21]">Premium Extensions</h3>
-              </div>
-              <p className="text-lg mb-6">
-                High-quality hair extensions for length and volume. We use premium, ethically sourced hair to ensure a seamless, natural blend with your existing hair.
-              </p>
-              <ul className="space-y-3">
-                {['Seamless Color Blending', 'Volume & Length Solutions', 'Premium Quality Hair', 'Expert Application'].map(item => (
-                  <li key={item} className="flex items-center gap-3 font-bold text-sm text-[#3c2a21]">
-                    <div className="w-1.5 h-1.5 bg-[#3c2a21] rounded-full" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Pillar 3: Custom Units */}
-            <div className="info-card">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-[#3c2a21] rounded-full flex items-center justify-center text-white italic font-black">U</div>
-                <h3 className="text-[#3c2a21]">Custom Molded Units</h3>
-              </div>
-              <p className="text-lg mb-6">
-                Individually molded hair systems perfected for each customer. From molding to final fitting, we ensure a natural, undetectable result.
-              </p>
-              <ul className="space-y-3">
-                {['Custom Head Molding', 'Undetectable Hairlines', 'Perfect Color Match', 'Glue-on & Tape-on Options'].map(item => (
-                  <li key={item} className="flex items-center gap-3 font-bold text-sm text-[#3c2a21]">
-                    <div className="w-1.5 h-1.5 bg-[#3c2a21] rounded-full" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Pillar 4: Precision Cuts */}
-            <div className="info-card">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-[#3c2a21] rounded-full flex items-center justify-center text-white italic font-black">C</div>
-                <h3 className="text-[#3c2a21]">Precision Haircuts</h3>
-              </div>
-              <p className="text-lg mb-6">
-                Expert haircuts of any kind. Whether you need a classic style or a modern fade, every cut is executed with clinical precision.
-              </p>
-              <ul className="space-y-3">
-                {['All Hair Types', 'Precision Fades', 'Custom Styling', 'Clinical Standards'].map(item => (
-                  <li key={item} className="flex items-center gap-3 font-bold text-sm text-[#3c2a21]">
-                    <div className="w-1.5 h-1.5 bg-[#3c2a21] rounded-full" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Payment & Financing Section */}
-      <section className="py-20 bg-[#f0eee6] border-y border-[#e0ddd0]">
-        <div className="container mx-auto text-center">
-          <h2 className="mb-12 text-[#3c2a21]">Payment & Financing</h2>
-          <div className="flex flex-wrap justify-center gap-12 items-center opacity-70 mb-16">
-            {['Visa', 'Mastercard', 'American Express', 'Discover'].map(card => (
-              <div key={card} className="text-xl font-black italic tracking-tighter uppercase text-[#3c2a21]">
-                {card}
+        {/* Laser Focus Section */}
+        <section className="bg-[#1a1a1a] text-white overflow-hidden">
+          <div className="flex flex-col lg:flex-row">
+            <div className="lg:w-1/2 p-12 md:p-24 flex flex-col justify-center">
+              <h2 className="champagne-text text-sm uppercase tracking-[0.3em] mb-6">Advanced Technology</h2>
+              <h2 className="text-4xl md:text-6xl mb-8 leading-tight">Clinical Laser <br/>Hair Therapy</h2>
+              <p className="text-white/60 text-lg mb-8 leading-relaxed">
+                Our Low-Level Laser Therapy (LLLT) is the non-invasive gold standard. We use laser therapy to help after transplants to stimulate hairs to grow, generating thick, healthy hair in the anagen phase.
+              </p>
+              <ul className="space-y-4 mb-12">
+                {['Stimulates ATP Production', 'Increases Scalp Blood Flow', 'Reverses Miniaturization', 'Essential Post-Transplant Care'].map((item, i) => (
+                  <li key={i} className="flex items-center gap-4 text-sm font-semibold tracking-wide">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#d4af37]"></span> {item}
+                  </li>
+                ))}
+              </ul>
+              <Link href="/laser-therapy" className="btn-primary bg-[#d4af37] text-[#1a1a1a] self-start">View Protocol</Link>
+            </div>
+            <div className="lg:w-1/2 bg-[url('https://images.unsplash.com/photo-1519415510236-855906a1b828?auto=format&fit=crop&q=80')] bg-cover bg-center min-h-[400px]"></div>
+          </div>
+        </section>
+
+        {/* Transplant & Medical Clarity */}
+        <section id="transplant" className="section-padding bg-[#fdfdfb]">
+          <div className="container mx-auto max-w-5xl text-center">
+            <h2 className="text-sm uppercase tracking-[0.4em] text-[#d4af37] mb-6">Strategic Partnerships</h2>
+            <h2 className="text-4xl md:text-5xl mb-10">Transplant Consultations</h2>
+            <div className="bg-white p-12 border border-gray-100 card-shadow">
+              <p className="text-xl text-gray-700 italic mb-8">
+                "We provide professional consultations for hair transplantation by approved medical doctors."
+              </p>
+              <div className="inline-block px-6 py-2 bg-red-50 text-red-800 text-xs font-bold uppercase tracking-widest mb-8">
+                Important: We are not medical doctors.
               </div>
+              <p className="text-gray-500 max-w-2xl mx-auto leading-relaxed">
+                Our role is to coordinate your restoration journey. We partner with the region's top hair transplant surgeons to ensure you receive medical-grade results, followed by our specialized post-op laser therapy to maximize hair density.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Surprise Service: Repairs */}
+        <section className="py-20 bg-white border-y border-gray-100">
+          <div className="container mx-auto">
+            <div className="flex flex-col md:flex-row items-center gap-16">
+              <div className="md:w-1/3">
+                <div className="aspect-[4/5] bg-gray-100 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80')] bg-cover bg-center grayscale opacity-80"></div>
+                </div>
+              </div>
+              <div className="md:w-2/3">
+                <h2 className="text-[#d4af37] text-sm uppercase tracking-[0.3em] mb-4">Specialized Artistry</h2>
+                <h2 className="text-4xl mb-6">Expert Hair Ventilation & Repairs</h2>
+                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                  We offer a unique, specialized service for hair system repairs, ventilation, and filling in bald spots. Performed by our expert specialist, this precision work restores your system to its original density.
+                </p>
+                <div className="flex items-center gap-8">
+                  <div>
+                    <span className="block text-3xl font-bold text-[#1a1a1a]">$50</span>
+                    <span className="text-xs uppercase tracking-widest text-gray-400">Per Hour</span>
+                  </div>
+                  <Link href="/book" className="btn-outline">Schedule Repair</Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Products Section */}
+        <section id="products" className="section-padding bg-[#fdfdfb]">
+          <div className="container mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-sm uppercase tracking-[0.4em] text-[#d4af37] mb-4">Professional Supply</h2>
+              <h2 className="text-4xl md:text-5xl">The Product Suite</h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {products.map((p, i) => (
+                <div key={i} className="bg-white p-10 border border-gray-100 hover:border-[#d4af37] transition-all group">
+                  <h4 className="text-lg mb-3 group-hover:text-[#d4af37] transition-colors">{p.name}</h4>
+                  <p className="text-xs text-gray-400 leading-relaxed">{p.desc}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-16 p-8 bg-[#1a1a1a] text-white text-center">
+              <p className="text-sm font-semibold tracking-widest uppercase">
+                We cut and style ANY hair system, regardless of where it was purchased.
+              </p>
+              <p className="text-xs text-[#d4af37] mt-2 italic">Please call for pricing and set your appointment today.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Payment Methods */}
+        <section className="py-12 bg-gray-50 border-t border-gray-100">
+          <div className="container mx-auto flex flex-wrap justify-center items-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all">
+            {['VISA', 'MASTERCARD', 'DISCOVER', 'AMEX', 'CARECREDIT (PENDING)'].map((p, i) => (
+              <span key={i} className="text-[10px] font-black tracking-[0.3em]">{p}</span>
             ))}
           </div>
-          <div className="max-w-xl mx-auto bg-white p-8 rounded-2xl border border-[#e0ddd0]">
-            <h3 className="text-lg mb-4 text-[#9a6137]">Medical Financing</h3>
-            <p className="text-sm font-bold text-[#3c2a21] mb-2">CARECREDIT COMING SOON</p>
-            <p className="text-xs opacity-60">
-              We are currently in the process of integrating CareCredit to offer flexible medical financing options for our hair restoration services.
+        </section>
+      </main>
+
+      <footer className="bg-[#1a1a1a] text-white py-20 px-6">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
+          <div className="col-span-1 md:col-span-2">
+            <h2 className="text-2xl font-bold mb-6">BRIAN IVIE <span className="font-light text-[#d4af37]">HAIR & EXTENSIONS</span></h2>
+            <p className="text-white/40 max-w-md leading-relaxed mb-8">
+              Executive hair restoration and extension services in St. Louis. Providing custom solutions and clinical technology for professional results.
+            </p>
+            <div className="flex gap-6">
+              <Link href="/book" className="text-xs font-bold uppercase tracking-widest hover:text-[#d4af37]">Book</Link>
+              <Link href="/laser-therapy" className="text-xs font-bold uppercase tracking-widest hover:text-[#d4af37]">Laser</Link>
+              <Link href="/contact" className="text-xs font-bold uppercase tracking-widest hover:text-[#d4af37]">Contact</Link>
+            </div>
+          </div>
+          <div>
+            <h4 className="text-[#d4af37] text-xs uppercase tracking-[0.2em] mb-6">Location</h4>
+            <p className="text-white/60 text-sm leading-loose">
+              Salon Lofts on Olive Blvd<br/>
+              Saint Louis, MO<br/>
+              <span className="text-white mt-4 block">Call to set your appointment today.</span>
             </p>
           </div>
         </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-16 bg-[#3c2a21] text-white">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-            <div>
-              <h3 className="text-white mb-6">BRIAN IVIE HAIR AND EXTENSIONS</h3>
-              <p className="text-[#f0eee6]/60 text-sm">
-                St. Louis' premier destination for advanced laser hair therapy, premium extensions, and custom restoration solutions.
-              </p>
-            </div>
-            <div>
-              <h4 className="text-white mb-6 uppercase tracking-widest text-sm">Studio</h4>
-              <p className="text-[#f0eee6]/80">
-                Salon Lofts on Olive Blvd<br />
-                Saint Louis, MO
-              </p>
-            </div>
-            <div>
-              <h4 className="text-white mb-6 uppercase tracking-widest text-sm">Connect</h4>
-              <p className="text-[#f0eee6]/80 mb-2">info@myhairloss.com</p>
-              <p className="text-[#f0eee6]/80">(314) 555-1234</p>
-            </div>
-          </div>
-          <div className="pt-12 border-t border-white/10 text-center">
-            <p className="text-xs opacity-40 uppercase tracking-widest">© {new Date().getFullYear()} Brian Ivie Hair and Extensions. All rights reserved.</p>
-          </div>
+        <div className="container mx-auto mt-20 pt-8 border-t border-white/5 text-center">
+          <p className="text-[10px] text-white/20 uppercase tracking-widest">© {new Date().getFullYear()} Brian Ivie Hair and Extensions. All rights reserved.</p>
         </div>
       </footer>
     </div>
