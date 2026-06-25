@@ -35,10 +35,10 @@ export default function Home() {
   ];
 
   const products = [
-    { name: 'Professional Tapes', desc: 'Ultra-hold adhesives for secure system placement.' },
-    { name: 'Liquid Adhesives', desc: 'Medical-grade bonding for active lifestyles.' },
-    { name: 'Specialty Shampoos', desc: 'Formulated for hair systems and extensions.' },
-    { name: 'Conditioners & Serums', desc: 'Essential care for maintaining hair longevity.' }
+    { name: 'Professional Tapes', desc: 'Ultra-hold adhesives for secure system placement.', price: '$25' },
+    { name: 'Liquid Adhesives', desc: 'Medical-grade bonding for active lifestyles.', price: '$30' },
+    { name: 'Specialty Shampoos', desc: 'Formulated for hair systems and extensions.', price: '$35' },
+    { name: 'Conditioners & Serums', desc: 'Essential care for maintaining hair longevity.', price: '$28' }
   ];
 
   const container = {
@@ -81,6 +81,7 @@ export default function Home() {
         <nav className="hidden lg:flex items-center gap-10">
           <Link href="#services" className="nav-link">Services</Link>
           <Link href="/laser-therapy" className="nav-link">Laser Therapy</Link>
+          <Link href="/store" className="nav-link">Store</Link>
           <Link href="#products" className="nav-link">Products</Link>
           <Link href="/book" className="btn-primary">Book Session</Link>
         </nav>
@@ -105,6 +106,7 @@ export default function Home() {
             <div className="flex flex-col gap-8">
               <Link href="#services" onClick={() => setMenuOpen(false)} className="text-4xl font-serif text-white hover:text-[#c5a059]">Services</Link>
               <Link href="/laser-therapy" onClick={() => setMenuOpen(false)} className="text-4xl font-serif text-white hover:text-[#c5a059]">Laser Therapy</Link>
+              <Link href="/store" onClick={() => setMenuOpen(false)} className="text-4xl font-serif text-white hover:text-[#c5a059]">Store</Link>
               <Link href="#products" onClick={() => setMenuOpen(false)} className="text-4xl font-serif text-white hover:text-[#c5a059]">Products</Link>
               <Link href="/book" onClick={() => setMenuOpen(false)} className="btn-primary mt-8 text-center">Book Now</Link>
             </div>
@@ -280,9 +282,15 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
               {products.map((p, i) => (
-                <div key={i} className="bg-white p-12 border border-gray-100 hover:border-[#c5a059] transition-all duration-500 group">
-                  <h4 className="text-2xl mb-4 font-bold group-hover:text-[#c5a059] transition-colors">{p.name}</h4>
-                  <p className="text-sm text-gray-400 leading-relaxed font-light">{p.desc}</p>
+                <div key={i} className="bg-white p-12 border border-gray-100 hover:border-[#c5a059] transition-all duration-500 group flex flex-col">
+                  <h4 className="text-2xl mb-3 font-bold group-hover:text-[#c5a059] transition-colors">{p.name}</h4>
+                  <p className="text-sm text-gray-400 leading-relaxed font-light flex-1 mb-6">{p.desc}</p>
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-50">
+                    <span className="text-lg font-bold text-[#c5a059]">{p.price}</span>
+                    <Link href="/store" className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#1a1a1a] hover:text-[#c5a059] transition-colors">
+                      Shop Now →
+                    </Link>
+                  </div>
                 </div>
               ))}
             </div>
@@ -314,6 +322,7 @@ export default function Home() {
               Executive hair restoration and extension services in St. Louis. Providing custom solutions and clinical technology for professional results.
             </p>
             <div className="flex gap-10">
+              <Link href="/store" className="text-xs font-bold uppercase tracking-[0.3em] text-[#c5a059] hover:text-white transition-colors">Store</Link>
               <Link href="/book" className="text-xs font-bold uppercase tracking-[0.3em] text-[#c5a059] hover:text-white transition-colors">Book Session</Link>
               <Link href="/laser-therapy" className="text-xs font-bold uppercase tracking-[0.3em] text-[#c5a059] hover:text-white transition-colors">Laser Protocol</Link>
               <Link href="/contact" className="text-xs font-bold uppercase tracking-[0.3em] text-[#c5a059] hover:text-white transition-colors">Contact</Link>
